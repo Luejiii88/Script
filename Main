@@ -2,7 +2,7 @@ local Players = game:GetService("Players") local UIS = game:GetService("UserInpu
 
 local player = Players.LocalPlayer local gui = Instance.new("ScreenGui") gui.Name = "r3d4ctRequirezzz" gui.ResetOnSpawn = false gui.Parent = player:WaitForChild("PlayerGui")
 
-local function init() local planTable = { LegoLord44th = "Pro", dlnobonito423 = "Pro", seg00b = "Pro", sae7rin7nelisagi = "Pro", DominikAllison = "Pro", lubers666_Meen = "Standard", Gooby_511 = "Pro", Fear1sWs10 = "Pro" } local userPlan = planTable[player.Name] or "Standard"
+local function init() local planTable = { LegoLord44th = "Pro", dlnobonito423 = "Pro", seg00b = "Pro", sae7rin7nelisagi = "Pro", DominikAllison = "Pro", lubers666_Meen = "Standard", Gooby_511 = "Pro" } local userPlan = planTable[player.Name] or "Standard"
 
 local loadingFrame = Instance.new("Frame", gui)
 loadingFrame.Name = "LoadingFrame"
@@ -114,4 +114,81 @@ local buttonInfos = {
         loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scripts/refs/heads/master/Grab%20Knife%20V4.lua"))()
     end},
     {Name = "c00lgui", fill = "require(15610593870)('%s')", exec = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/MiRw3b/c00lgui-v3rx/main/c
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MiRw3b/c00lgui-v3rx/main/c00lguiv3rx.lua"))()
+    end},
+    {Name = "RC7", fill = "require(12350030542).RC7('%s')", exec = function()
+        loadstring(game:HttpGet("https://incorbxlua.onrender.com/raw/e624eec5-7232-4504-8f9d-b396eb0f0cb6"))()
+    end},
+    {Name = "Xester", fill = "require(3418687354).load('%s')", exec = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Icalock/Server/refs/heads/main/Xester%20FD.txt", true))()
+    end},
+    {Name = "InfYield", fill = "require(3498687954).load('%s')", exec = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+    end}
+}
+
+for i, info in ipairs(buttonInfos) do
+    local btn = Instance.new("TextButton", scriptsFrame)
+    btn.Name = info.Name
+    btn.Size = UDim2.new(1, -10, 0, 30)
+    btn.Position = UDim2.new(0, 5, 0, 10 + (i-1)*40)
+    btn.BackgroundColor3 = Color3.fromRGB(60, 60, 75)
+    btn.Font = Enum.Font.GothamBold
+    btn.TextSize = 16
+    btn.TextColor3 = Color3.fromRGB(200, 200, 255)
+    btn.Text = info.Name == "InfYield" and "Infinite Yield[SS]" or info.Name
+    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
+    btn.MouseButton1Click:Connect(function()
+        inputBox.Text = string.format(info.fill, player.Name)
+    end)
+end
+
+local dragInput, dragStart, startPos
+execFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        dragStart = input.Position
+        startPos = execFrame.Position
+        dragInput = input
+    end
+end)
+UIS.InputChanged:Connect(function(input)
+    if input == dragInput then
+        local delta = input.Position - dragStart
+        execFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+
+executeBtn.MouseButton1Click:Connect(function()
+    local txt = inputBox.Text
+    for _, info in ipairs(buttonInfos) do
+        if txt == string.format(info.fill, player.Name) then
+            info.exec()
+            return
+        end
+    end
+    if planTable[player.Name] == "Pro" then
+        local success, err = pcall(function() loadstring(txt)() end)
+        if not success then warn("Execution error:", err) end
+    else
+        warn("Custom Lua execution is a Pro-only feature.")
+    end
+end)
+
+clearBtn.MouseButton1Click:Connect(function()
+    inputBox.Text = ""
+end)
+
+coroutine.wrap(function()
+    for _, v in ipairs({"Loading Executor...", "Collecting API", "Seeing if game is supported..."}) do
+        statusLabel.Text = v
+        wait(1)
+    end
+    loadingFrame.Visible = false
+    execFrame.Visible = true
+    StarterGui:SetCore("SendNotification", {Title = "Success", Text = "r3d4ct SS loaded successfully!!!"})
+end)()
+
+end
+
+init()
+
