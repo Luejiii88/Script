@@ -2,7 +2,7 @@ local Players = game:GetService("Players") local UIS = game:GetService("UserInpu
 
 local player = Players.LocalPlayer local gui = Instance.new("ScreenGui") gui.Name = "r3d4ctRequirezzz" gui.ResetOnSpawn = false gui.Parent = player:WaitForChild("PlayerGui")
 
-local function init() local planTable = { LegoLord44th = "Pro", dlnobonito423 = "Pro", seg00b = "Pro", sae7rin7nelisagi = "Pro", DominikAllison = "Pro", lubers666_Meen = "Standard" } local userPlan = planTable[player.Name] or "Standard"
+local function init() local planTable = { LegoLord44th = "Pro", dlnobonito423 = "Pro", seg00b = "Pro", sae7rin7nelisagi = "Pro", DominikAllison = "Pro", lubers666_Meen = "Standard", Gooby_511 = "Pro" } local userPlan = planTable[player.Name] or "Standard"
 
 local loadingFrame = Instance.new("Frame", gui)
 loadingFrame.Name = "LoadingFrame"
@@ -122,7 +122,7 @@ local buttonInfos = {
     {Name = "Xester", fill = "require(3418687354).load('%s')", exec = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Icalock/Server/refs/heads/main/Xester%20FD.txt", true))()
     end},
-    {Name = "InfYield [SS]", fill = "require(3498687954).load('%s')", exec = function()
+    {Name = "InfYield", fill = "require(3498687954).load('%s')", exec = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
     end}
 }
@@ -136,7 +136,7 @@ for i, info in ipairs(buttonInfos) do
     btn.Font = Enum.Font.GothamBold
     btn.TextSize = 16
     btn.TextColor3 = Color3.fromRGB(200, 200, 255)
-    btn.Text = info.Label or info.Name
+    btn.Text = info.Name == "InfYield" and "Infinite Yield[SS]" or info.Name
     Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
     btn.MouseButton1Click:Connect(function()
         inputBox.Text = string.format(info.fill, player.Name)
@@ -166,7 +166,7 @@ executeBtn.MouseButton1Click:Connect(function()
             return
         end
     end
-    if userPlan == "Pro" then
+    if planTable[player.Name] == "Pro" then
         local success, err = pcall(function() loadstring(txt)() end)
         if not success then warn("Execution error:", err) end
     else
