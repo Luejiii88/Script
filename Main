@@ -1,191 +1,184 @@
 local Players = game:GetService("Players") local UIS = game:GetService("UserInputService") local StarterGui = game:GetService("StarterGui")
 
-local player = Players.LocalPlayer local gui = Instance.new("ScreenGui") gui.Name = "r3d4ctRequirezzz" gui.ResetOnSpawn = false gui.Parent = player:WaitForChild("PlayerGui")
+local player = Players.LocalPlayer
 
-local function init() local planTable = { LegoLord44th = "Pro", dlnobonito423 = "Pro", seg00b = "Pro", sae7rin7nelisagi = "Pro", DominikAllison = "Pro", lubers666_Meen = "Standard", Gooby_511 = "Pro" } local userPlan = planTable[player.Name] or "Standard"
+local function init() local planTable = { LegoLord44th = "Pro", dlnobonito423 = "Pro", seg00b = "Pro", sae7rin7nelisagi = "Pro", DominikAllison = "Pro", Gooby_511 = "Pro", Fear1sWs10 = "Pro", lubers666_Meen = "Standard" } local userPlan = planTable[player.Name] or "Standard"
+
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.Name = "r3d4ctRequirezzz"
+gui.ResetOnSpawn = false
 
 local loadingFrame = Instance.new("Frame", gui)
 loadingFrame.Name = "LoadingFrame"
-loadingFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-loadingFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-loadingFrame.Size = UDim2.new(0, 300, 0, 150)
-loadingFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 40)
-Instance.new("UICorner", loadingFrame).CornerRadius = UDim.new(0, 12)
-Instance.new("UIStroke", loadingFrame).Thickness = 2
+loadingFrame.AnchorPoint = Vector2.new(0.5,0.5)
+loadingFrame.Position = UDim2.new(0.5,0,0.5,0)
+loadingFrame.Size = UDim2.new(0,300,0,150)
+loadingFrame.BackgroundColor3 = Color3.fromRGB(30,30,40)
+Instance.new("UICorner",loadingFrame).CornerRadius = UDim.new(0,12)
+Instance.new("UIStroke",loadingFrame).Thickness = 2
 
-local statusLabel = Instance.new("TextLabel", loadingFrame)
+local statusLabel = Instance.new("TextLabel",loadingFrame)
 statusLabel.Name = "Status"
-statusLabel.Size = UDim2.new(1, -20, 0, 30)
-statusLabel.Position = UDim2.new(0, 10, 0, 10)
+statusLabel.Size = UDim2.new(1,-20,0,30)
+statusLabel.Position = UDim2.new(0,10,0,10)
 statusLabel.BackgroundTransparency = 1
 statusLabel.Font = Enum.Font.GothamBold
 statusLabel.TextSize = 20
-statusLabel.TextColor3 = Color3.fromRGB(220, 220, 250)
+statusLabel.TextColor3 = Color3.fromRGB(220,220,250)
 
 local execFrame = Instance.new("Frame", gui)
 execFrame.Name = "ExecutorFrame"
-execFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-execFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-execFrame.Size = UDim2.new(0, 400, 0, 390)
-execFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+execFrame.AnchorPoint = Vector2.new(0.5,0.5)
+execFrame.Position = UDim2.new(0.5,0,0.5,0)
+execFrame.Size = UDim2.new(0,400,0,400)
+execFrame.BackgroundColor3 = Color3.fromRGB(25,25,35)
 execFrame.Visible = false
-Instance.new("UICorner", execFrame).CornerRadius = UDim.new(0, 12)
-Instance.new("UIStroke", execFrame).Thickness = 2
+Instance.new("UICorner",execFrame).CornerRadius = UDim.new(0,12)
+Instance.new("UIStroke",execFrame).Thickness = 2
 
-local title = Instance.new("TextLabel", execFrame)
-title.Size = UDim2.new(1, -20, 0, 30)
-title.Position = UDim2.new(0, 10, 0, 10)
+local title = Instance.new("TextLabel",execFrame)
+title.Size = UDim2.new(1,-20,0,30)
+title.Position = UDim2.new(0,10,0,10)
 title.BackgroundTransparency = 1
 title.Font = Enum.Font.GothamBlack
 title.TextSize = 24
-title.TextColor3 = Color3.fromRGB(255, 100, 100)
+title.TextColor3 = Color3.fromRGB(255,100,100)
 title.Text = "r3d4ct requirezzz hehe"
 title.TextXAlignment = Enum.TextXAlignment.Left
 
-local shout = Instance.new("TextLabel", execFrame)
-shout.Size = UDim2.new(1, -20, 0, 20)
-shout.Position = UDim2.new(0, 10, 0, 45)
+local shout = Instance.new("TextLabel",execFrame)
+shout.Size = UDim2.new(1,-20,0,20)
+shout.Position = UDim2.new(0,10,0,45)
 shout.BackgroundTransparency = 1
 shout.Font = Enum.Font.Gotham
 shout.TextSize = 14
-shout.TextColor3 = Color3.fromRGB(180, 180, 220)
+shout.TextColor3 = Color3.fromRGB(180,180,220)
 shout.Text = "Shoutout to Explossskidd for being a special member!"
 shout.TextXAlignment = Enum.TextXAlignment.Left
 
-local planLabel = Instance.new("TextLabel", execFrame)
-planLabel.Size = UDim2.new(0, 200, 0, 20)
-planLabel.Position = UDim2.new(1, -210, 0, 10)
+local planLabel = Instance.new("TextLabel",execFrame)
+planLabel.Size = UDim2.new(0,120,0,20)
+planLabel.Position = UDim2.new(1,-130,0,10)
 planLabel.BackgroundTransparency = 1
 planLabel.Font = Enum.Font.GothamBold
 planLabel.TextSize = 14
-if userPlan == "Pro" then
-    planLabel.TextColor3 = Color3.fromRGB(255, 215, 0)
-else
-    planLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
-end
+planLabel.TextColor3 = (userPlan == "Pro") and Color3.fromRGB(255,215,0) or Color3.fromRGB(200,200,200)
 planLabel.Text = userPlan .. " Plan"
 planLabel.TextXAlignment = Enum.TextXAlignment.Right
 
-local scriptsFrame = Instance.new("Frame", execFrame)
+local scriptsFrame = Instance.new("Frame",execFrame)
 scriptsFrame.Name = "ScriptsFrame"
-scriptsFrame.Position = UDim2.new(0, 10, 0, 75)
-scriptsFrame.Size = UDim2.new(0, 120, 0, 240)
-scriptsFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-Instance.new("UICorner", scriptsFrame).CornerRadius = UDim.new(0, 8)
-Instance.new("UIStroke", scriptsFrame).Thickness = 1
+scriptsFrame.Position = UDim2.new(0,10,0,75)
+scriptsFrame.Size = UDim2.new(0,120,0,260)
+scriptsFrame.BackgroundColor3 = Color3.fromRGB(40,40,50)
+Instance.new("UICorner",scriptsFrame).CornerRadius = UDim.new(0,8)
+Instance.new("UIStroke",scriptsFrame).Thickness = 1
 
-local inputBox = Instance.new("TextBox", execFrame)
+local inputBox = Instance.new("TextBox",execFrame)
 inputBox.Name = "ScriptInput"
-inputBox.Position = UDim2.new(0, 140, 0, 75)
-inputBox.Size = UDim2.new(0, 240, 0, 260)
-inputBox.BackgroundColor3 = Color3.fromRGB(40, 40, 50)
-inputBox.TextColor3 = Color3.fromRGB(230, 230, 255)
+inputBox.Position = UDim2.new(0,140,0,75)
+inputBox.Size = UDim2.new(0,240,0,260)
+inputBox.BackgroundColor3 = Color3.fromRGB(40,40,50)
+inputBox.TextColor3 = Color3.fromRGB(230,230,255)
 inputBox.Font = Enum.Font.Code
 inputBox.TextSize = 18
 inputBox.ClearTextOnFocus = false
 inputBox.MultiLine = true
-inputBox.PlaceholderText = "-- script appears here"
-Instance.new("UICorner", inputBox).CornerRadius = UDim.new(0, 6)
+inputBox.PlaceholderText = "-- script here or paste Lua"
+Instance.new("UICorner",inputBox).CornerRadius = UDim.new(0,6)
 
-local executeBtn = Instance.new("TextButton", execFrame)
+local executeBtn = Instance.new("TextButton",execFrame)
 executeBtn.Name = "ExecuteBtn"
-executeBtn.Size = UDim2.new(0, 140, 0, 40)
-executeBtn.Position = UDim2.new(0, 140, 1, -50)
-executeBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 75)
+executeBtn.Size = UDim2.new(0,140,0,40)
+executeBtn.Position = UDim2.new(0,140,1,-50)
+executeBtn.BackgroundColor3 = Color3.fromRGB(60,60,75)
 executeBtn.Font = Enum.Font.GothamBold
 executeBtn.TextSize = 20
-executeBtn.TextColor3 = Color3.fromRGB(200, 200, 255)
+executeBtn.TextColor3 = Color3.fromRGB(200,200,255)
 executeBtn.Text = "Execute"
-Instance.new("UICorner", executeBtn).CornerRadius = UDim.new(0, 6)
+Instance.new("UICorner",executeBtn).CornerRadius = UDim.new(0,6)
 
-local clearBtn = Instance.new("TextButton", execFrame)
+local clearBtn = Instance.new("TextButton",execFrame)
 clearBtn.Name = "ClearBtn"
 clearBtn.Size = executeBtn.Size
-clearBtn.Position = UDim2.new(0, 290, 1, -50)
+clearBtn.Position = UDim2.new(0,290,1,-50)
 clearBtn.BackgroundColor3 = executeBtn.BackgroundColor3
 clearBtn.Font = executeBtn.Font
 clearBtn.TextSize = executeBtn.TextSize
 clearBtn.TextColor3 = executeBtn.TextColor3
 clearBtn.Text = "Clear"
-Instance.new("UICorner", clearBtn).CornerRadius = UDim.new(0, 6)
+Instance.new("UICorner",clearBtn).CornerRadius = UDim.new(0,6)
 
 local buttonInfos = {
-    {Name = "GrabKnife", fill = "require(2681865333):Fire('ok', '%s')", exec = function()
+    {Name="GrabKnife",fill="require(2681865333):Fire('ok','%s')",exec=function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/retpirato/Roblox-Scripts/refs/heads/master/Grab%20Knife%20V4.lua"))()
     end},
-    {Name = "c00lgui", fill = "require(15610593870)('%s')", exec = function()
+    {Name="c00lgui",fill="require(15610593870)('%s')",exec=function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MiRw3b/c00lgui-v3rx/main/c00lguiv3rx.lua"))()
     end},
-    {Name = "RC7", fill = "require(12350030542).RC7('%s')", exec = function()
+    {Name="RC7",fill="require(12350030542).RC7('%s')",exec=function()
         loadstring(game:HttpGet("https://incorbxlua.onrender.com/raw/e624eec5-7232-4504-8f9d-b396eb0f0cb6"))()
     end},
-    {Name = "Xester", fill = "require(3418687354).load('%s')", exec = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Icalock/Server/refs/heads/main/Xester%20FD.txt", true))()
+    {Name="Xester",fill="require(3418687354).load('%s')",exec=function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Icalock/Server/refs/heads/main/Xester%20FD.txt",true))()
     end},
-    {Name = "InfYield", fill = "require(3498687954).load('%s')", exec = function()
+    {Name="InfYield",fill="require(3498687954).load('%s')",exec=function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
     end}
 }
 
-for i, info in ipairs(buttonInfos) do
-    local btn = Instance.new("TextButton", scriptsFrame)
+for i,info in ipairs(buttonInfos) do
+    local btn = Instance.new("TextButton",scriptsFrame)
     btn.Name = info.Name
-    btn.Size = UDim2.new(1, -10, 0, 30)
-    btn.Position = UDim2.new(0, 5, 0, 10 + (i-1)*40)
-    btn.BackgroundColor3 = Color3.fromRGB(60, 60, 75)
+    btn.Size = UDim2.new(1,-10,0,30)
+    btn.Position = UDim2.new(0,5,0,10+(i-1)*40)
+    btn.BackgroundColor3 = Color3.fromRGB(60,60,75)
     btn.Font = Enum.Font.GothamBold
     btn.TextSize = 16
-    btn.TextColor3 = Color3.fromRGB(200, 200, 255)
-    btn.Text = info.Name == "InfYield" and "Infinite Yield[SS]" or info.Name
-    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 6)
+    btn.TextColor3 = Color3.fromRGB(200,200,255)
+    btn.Text = (info.Name=="InfYield") and "Infinite Yield[SS]" or info.Name
+    Instance.new("UICorner",btn).CornerRadius = UDim.new(0,6)
     btn.MouseButton1Click:Connect(function()
-        inputBox.Text = string.format(info.fill, player.Name)
+        inputBox.Text = string.format(info.fill,player.Name)
     end)
 end
 
-local dragInput, dragStart, startPos
+local dragInput,dragStart,startPos
 execFrame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-        dragStart = input.Position
-        startPos = execFrame.Position
-        dragInput = input
+    if input.UserInputType==Enum.UserInputType.MouseButton1 or input.UserInputType==Enum.UserInputType.Touch then
+        dragStart=input.Position
+        startPos=execFrame.Position
+        dragInput=input
     end
 end)
 UIS.InputChanged:Connect(function(input)
-    if input == dragInput then
-        local delta = input.Position - dragStart
-        execFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    if input==dragInput then
+        local delta=input.Position-dragStart
+        execFrame.Position=UDim2.new(startPos.X.Scale,startPos.X.Offset+delta.X,startPos.Y.Scale,startPos.Y.Offset+delta.Y)
     end
 end)
 
 executeBtn.MouseButton1Click:Connect(function()
-    local txt = inputBox.Text
-    for _, info in ipairs(buttonInfos) do
-        if txt == string.format(info.fill, player.Name) then
-            info.exec()
-            return
-        end
+    local txt=inputBox.Text
+    for _,info in ipairs(buttonInfos) do
+        if txt==string.format(info.fill,player.Name) then info.exec() return end
     end
-    if planTable[player.Name] == "Pro" then
-        local success, err = pcall(function() loadstring(txt)() end)
-        if not success then warn("Execution error:", err) end
+    if userPlan=="Pro" then
+        local ok,err=pcall(function() loadstring(txt)() end)
+        if not ok then warn("Err:",err) end
     else
-        warn("Custom Lua execution is a Pro-only feature.")
+        warn("Custom Lua exec is Pro-only.")
     end
 end)
-
-clearBtn.MouseButton1Click:Connect(function()
-    inputBox.Text = ""
-end)
+clearBtn.MouseButton1Click:Connect(function() inputBox.Text="" end)
 
 coroutine.wrap(function()
-    for _, v in ipairs({"Loading Executor...", "Collecting API", "Seeing if game is supported..."}) do
-        statusLabel.Text = v
-        wait(1)
+    for _,v in ipairs({"Loading Executor...","Collecting API","Seeing if game is supported..."}) do
+        statusLabel.Text=v wait(1)
     end
-    loadingFrame.Visible = false
-    execFrame.Visible = true
-    StarterGui:SetCore("SendNotification", {Title = "Success", Text = "r3d4ct SS loaded successfully!!!"})
+    loadingFrame.Visible=false
+    execFrame.Visible=true
+    StarterGui:SetCore("SendNotification",{Title="Success",Text="r3d4ct SS loaded successfully!!!"})
 end)()
 
 end
